@@ -22,38 +22,71 @@ const Register = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card glass-card tilt-card mb-5">
-            <div className="card-body p-4">
-              <h3 className="card-title text-center mb-4">Create Account</h3>
-              {error && <div className="alert alert-danger" style={{background: 'rgba(239, 68, 68, 0.2)', color: '#fca5a5', border: '1px solid #ef4444'}}>{error}</div>}
-              <form onSubmit={handleRegister}>
-                <div className="mb-3">
-                  <label className="form-label">Name</label>
-                  <input type="text" required className="form-control" placeholder="John Doe" value={name} onChange={(e) => setName(e.target.value)} />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label">Email address</label>
-                  <input type="email" required className="form-control" placeholder="john@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </div>
-                <div className="mb-4">
-                  <label className="form-label">Password</label>
-                  <input type="password" required className="form-control" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} />
-                  <div className="form-text mt-2" style={{color: '#94a3b8', fontSize: '0.8rem'}}>
-                    <i className="bi bi-info-circle me-1"></i>
-                    Password must be at least 8 characters long, and contain a mix of letters and numbers for maximum security.
-                  </div>
-                </div>
-                <button type="submit" className="btn btn-primary w-100 py-2">Start Journey</button>
-              </form>
-              <div className="text-center mt-4">
-                <p className="text-muted">Already have an account? <Link to="/login" className="text-info text-decoration-none">Login here</Link></p>
-              </div>
-            </div>
-          </div>
+    <div className="flex items-center justify-center min-h-screen p-4 animate-fade-in-up">
+      <div className="w-full max-w-md bg-app-surface border border-app-border rounded-xl p-8 shadow-xl">
+        
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-semibold text-white tracking-tight">Create an account</h3>
+          <p className="text-sm text-gray-400 mt-2">Enter your details below</p>
         </div>
+
+        {error && (
+          <div className="mb-6 p-3 bg-app-danger/20 border border-app-danger/50 text-red-300 rounded-lg text-sm text-center">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleRegister} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-1">Name</label>
+            <input 
+              type="text" 
+              required 
+              className="w-full bg-transparent border border-gray-700 rounded-lg px-4 py-2 text-gray-200 placeholder-gray-500 focus:outline-none focus:border-app-accent focus:ring-1 focus:ring-app-accent transition-colors" 
+              placeholder="John Doe" 
+              value={name} 
+              onChange={(e) => setName(e.target.value)} 
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-1">Email address</label>
+            <input 
+              type="email" 
+              required 
+              className="w-full bg-transparent border border-gray-700 rounded-lg px-4 py-2 text-gray-200 placeholder-gray-500 focus:outline-none focus:border-app-accent focus:ring-1 focus:ring-app-accent transition-colors" 
+              placeholder="name@example.com" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+            />
+          </div>
+          <div className="pb-2">
+            <label className="block text-sm font-medium text-gray-300 mb-1">Password</label>
+            <input 
+              type="password" 
+              required 
+              className="w-full bg-transparent border border-gray-700 rounded-lg px-4 py-2 text-gray-200 placeholder-gray-500 focus:outline-none focus:border-app-accent focus:ring-1 focus:ring-app-accent transition-colors mb-2" 
+              placeholder="••••••••" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+            />
+            <p className="text-xs text-gray-500">
+              Must be at least 8 characters long and contain a mix of letters and numbers.
+            </p>
+          </div>
+          <button 
+            type="submit" 
+            className="w-full bg-app-accent hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+          >
+            Register
+          </button>
+        </form>
+
+        <div className="text-center mt-6">
+          <p className="text-sm text-gray-400">
+            Already have an account? <Link to="/login" className="text-app-accent hover:text-blue-400 transition-colors">Sign in</Link>
+          </p>
+        </div>
+
       </div>
     </div>
   );
