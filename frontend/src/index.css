@@ -1,9 +1,171 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-@layer base {
-  body {
-    @apply bg-app-base text-gray-200 font-sans min-h-screen m-0 overflow-x-hidden antialiased;
-  }
+body {
+  background-color: #0b1220;
+  color: #e5e7eb;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography & Links */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+a {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #60a5fa;
+}
+
+.text-muted {
+  color: #9ca3af !important;
+}
+
+/* Cards (Calm SaaS Style) */
+.card-saas {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-saas:hover {
+  transform: translateY(-2px);
+  border-color: #374151;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card-header-saas {
+  background-color: transparent;
+  border-bottom: 1px solid #1f2937;
+  padding: 1.25rem 1.5rem;
+  font-weight: 500;
+  color: #f9fafb;
+}
+
+.card-body-saas {
+  padding: 1.5rem;
+}
+
+/* Inputs & Forms */
+.form-control, .form-select {
+  background-color: transparent !important;
+  border: 1px solid #374151 !important;
+  border-radius: 8px !important;
+  color: #e5e7eb !important;
+  padding: 0.6rem 1rem !important;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control::placeholder {
+  color: #6b7280;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 1px #3b82f6 !important;
+  outline: none;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #9ca3af;
+  margin-bottom: 0.4rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #2563eb;
+  border: none;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+  transform: scale(1.01);
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+.btn-transparent {
+  background-color: transparent;
+  border: 1px solid #374151;
+  color: #d1d5db;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-transparent:hover {
+  background-color: #1f2937;
+  color: #ffffff;
+}
+
+/* Navbar */
+.navbar-saas {
+  background-color: #111827 !important;
+  border-bottom: 1px solid #1f2937;
+  padding: 0.75rem 1.5rem;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #f9fafb !important;
+}
+
+/* Tags / Pills */
+.pill-lost {
+  background-color: rgba(153, 27, 27, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(153, 27, 27, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.pill-found {
+  background-color: rgba(22, 101, 52, 0.2);
+  color: #86efac;
+  border: 1px solid rgba(22, 101, 52, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Utils */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Animations */
+@keyframes fadeSlideUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fadeSlideUp 0.4s ease-out forwards;
 }
