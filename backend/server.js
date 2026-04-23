@@ -15,6 +15,7 @@ mongoose.connect(process.env.MONGODB_URI)
 .catch(err => console.error(err.message));
 
 // Define Routes
+app.get('/', (req, res) => res.send('Backend API is running successfully!'));
 app.use('/api', require('./routes/auth'));
 app.use('/api/items', require('./routes/items'));
 
