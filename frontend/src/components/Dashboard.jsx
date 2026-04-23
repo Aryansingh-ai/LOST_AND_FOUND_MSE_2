@@ -15,6 +15,7 @@ const Dashboard = () => {
     contactInfo: ''
   });
   const [editingId, setEditingId] = useState(null);
+  const [showProfile, setShowProfile] = useState(false);
   
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
@@ -97,20 +98,37 @@ const Dashboard = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark py-3">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">Lost & Found System</a>
-          <button className="btn btn-outline-light" onClick={handleLogout}>Logout</button>
+          <a className="navbar-brand floating-icon" href="#">
+            <i className="bi bi-box-seam me-2"></i> Lost & Found System
+          </a>
+          <div className="d-flex align-items-center position-relative">
+            <div className="profile-bubble me-3" onClick={() => setShowProfile(!showProfile)}>
+              {user?.name?.charAt(0).toUpperCase()}
+            </div>
+            {showProfile && (
+              <div className="dropdown-menu-glass position-absolute end-0 mt-2 p-3 shadow-lg" style={{top: '100%', zIndex: 1000, minWidth: '200px'}}>
+                <div className="text-center mb-3">
+                  <div className="fw-bold fs-5">{user?.name}</div>
+                  <div className="text-muted small">{user?.email}</div>
+                </div>
+                <hr className="border-secondary" />
+                <button className="btn btn-danger w-100 btn-sm" onClick={handleLogout}>Logout</button>
+              </div>
+            )}
+          </div>
         </div>
       </nav>
 
-      <div className="container mt-4">
-        <h3>Welcome, {user?.name}</h3>
+      <div className="container mt-5">
         
         <div className="row mt-4">
           <div className="col-md-4">
-            <div className="card shadow mb-4">
-              <div className="card-header">{editingId ? 'Edit Item' : 'Add New Item'}</div>
+            <div className="card glass-card tilt-card mb-4" style={{border: '1px solid rgba(14, 165, 233, 0.3)'}}>
+              <div className="card-header border-bottom-0 bg-transparent pt-4 pb-0 fw-bold fs-5 text-info">
+                {editingId ? 'Edit Item Details' : 'Report New Item'}
+              </div>
               <div className="card-body">
                 <form onSubmit={handleSubmit}>
                   <div className="mb-2">
@@ -157,10 +175,13 @@ const Dashboard = () => {
 
             <div className="row">
               {items.map(item => (
-                <div key={item._id} className="col-md-6 mb-3">
-                  <div className="card shadow-sm border-0">
+                <div key={item._id} className="col-md-6 mb-4">
+                  <div className="card glass-card tilt-card h-100">
                     <div className="card-body">
-                      <h5 className="card-title">{item.itemName} <span className={`badge ${item.type === 'Lost' ? 'bg-danger' : 'bg-success'} float-end`}>{item.type}</span></h5>
+                      <h5 className="card-title d-flex justify-content-between align-items-center mb-3">
+                        {item.itemName} 
+                        <span className={`badge ${item.type === 'Lost' ? 'bg-danger' : 'bg-success'} shadow-sm`}>{item.type}</span>
+                      </h5>
                       <p className="card-text text-muted">{item.description}</p>
                       <p className="mb-1"><strong>Location:</strong> {item.location}</p>
                       <p className="mb-1"><strong>Date:</strong> {new Date(item.date).toLocaleDateString()}</p>

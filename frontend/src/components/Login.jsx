@@ -24,23 +24,23 @@ const Login = () => {
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <div className="card shadow">
-            <div className="card-body">
-              <h3 className="card-title text-center mb-4">Login</h3>
-              {error && <div className="alert alert-danger">{error}</div>}
+          <div className="card glass-card tilt-card mb-5">
+            <div className="card-body p-4">
+              <h3 className="card-title text-center mb-4 text-white">Welcome Back</h3>
+              {error && <div className="alert alert-danger" style={{background: 'rgba(239, 68, 68, 0.2)', color: '#fca5a5', border: '1px solid #ef4444'}}>{error}</div>}
               <form onSubmit={handleLogin}>
                 <div className="mb-3">
                   <label className="form-label">Email address</label>
-                  <input type="email" required className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <input type="email" required className="form-control" placeholder="john@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
-                <div className="mb-3">
+                <div className="mb-4">
                   <label className="form-label">Password</label>
-                  <input type="password" required className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <input type="password" required className="form-control" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <button type="submit" className="btn btn-primary w-100">Login</button>
+                <button type="submit" className="btn btn-primary w-100 py-2">Login</button>
               </form>
-              <div className="text-center mt-3">
-                <p>Don't have an account? <Link to="/register">Register</Link></p>
+              <div className="text-center mt-4">
+                <p className="text-muted">Don't have an account? <Link to="/register" className="text-info text-decoration-none">Register here</Link></p>
               </div>
             </div>
           </div>
